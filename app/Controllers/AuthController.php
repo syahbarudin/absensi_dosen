@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\MahasiswaModel;
 use App\Models\UserModel;
 
 class AuthController extends BaseController
@@ -9,12 +10,12 @@ class AuthController extends BaseController
     public function index()
     {
         $page = $this->request->getGet('page') ?? 'login';
-        return view('auth', ['page' => $page]);
+        return view('Mahasiswa/auth', ['page' => $page]);
     }
 
     public function register()
     {
-        $model = new UserModel();
+        $model = new MahasiswaModel();
 
         $data = [
             'username' => $this->request->getPost('username'),
@@ -28,24 +29,24 @@ class AuthController extends BaseController
 
     public function login()
     {
-        $model = new UserModel();
+        $model = new MahasiswaModel();
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
 
-        $user = $model->where('username', $username)->first();
+        $mahasiswa = $model->where('username', $username)->first();
 
-        if ($user && password_verify($password, $user['password'])) {
+        if ($mahasiswa && password_verify($password, $mahasiswa['password'])) {
             session()->regenerate();
 
             $ip_address = $this->request->getIPAddress(); // Mendapatkan IP Address pengguna
             $device_info = $_SERVER['HTTP_USER_AGENT'];
             $timestamp = date('Y-m-d H:i:s');
-            $is_new_device = $device_info !== $user['device_info'];
-            $is_new_ip = $ip_address !== $user['ip_address'];
+            $is_new_device = $device_info !== $mahasiswa['device_info'];
+            $is_new_ip = $ip_address !== $mahasiswa['ip_address'];
             
             if ($is_new_device || $is_new_ip) {
                 // Akhiri sesi sebelumnya
-                $this->terminatePreviousSession($user['id']);
+                $this->terminatePreviousSession($mahasiswa['id']);
             }
 
             $data = [
@@ -54,11 +55,11 @@ class AuthController extends BaseController
                 'last_login' => $timestamp
             ];
 
-            $model->update($user['id'], $data);
+            $model->update($mahasiswa['id'], $data);
 
             // Simpan data waktu login dan nama pengguna ke dalam session
-            session()->set('user_id', $user['id']);
-            session()->set('username', $user['username']);
+            session()->set('mahasiswa_id', $mahasiswa['id']);
+            session()->set('username', $mahasiswa['username']);
             session()->set('login_time', date('H:i'));
             session()->set('ip_address', $ip_address);
             session()->set('is_new_device', $is_new_device);
@@ -69,15 +70,15 @@ class AuthController extends BaseController
         }
     }
 
-    private function terminatePreviousSession($user_id)
+    private function terminatePreviousSession($mahasiswa_id)
     {
-        $model = new UserModel();
+        $model = new MahasiswaModel();
         $data = [
             'ip_address' => null,
             'device_info' => null,
         ];
 
-        $model->update($user_id, $data);
+        $model->update($mahasiswa_id, $data);
     }
 
     public function logout()
@@ -86,10 +87,10 @@ class AuthController extends BaseController
         return redirect()->to('/');
     }
 
-    public function verify_session($user_id)
+    public function verify_session($mahasiswa_id)
     {
-        $model = new UserModel();
-        $user = $model->find($user_id);
+        $model = new MahasiswaModel();
+        $user = $model->find($mahasiswa_id);
 
         if ($user) {
             $current_ip = $this->request->getIPAddress();

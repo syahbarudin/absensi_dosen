@@ -4,27 +4,29 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\DosenModel;
-use App\Models\AbsensiModel;
+use App\Models\JanjiTemuModel;
 
-class DosenController extends BaseController
+class D_HomeController extends BaseController
 {
     public function index()
     {
-        $dosenModel = new DosenModel();
+        $dosenModel = new DosenModel(); // Memanggil UserModel
+
         $dosen_id = session()->get('dosen_id');
         $dosen = $dosenModel->find($dosen_id);
 
         // Verifikasi IP address
         if ($this->request->getIPAddress() !== $dosen['ip_address']) {
-            echo "<script>alert('Akun ini telah login dari perangkat lain!'); window.location.href = '/';</script>";
+            echo "<script>alert('Akun ini telah login diperangkat lain !'); window.location.href = '/';</script>";
             return false;
         }
-
-        // Mengatur zona waktu untuk wilayah Indonesia
+        
+        //Mengatur zona waktu untuk region indonesia
         date_default_timezone_set('Asia/Jakarta');
+        // Ambil data waktu login dan nama pengguna dari session
         $login_time = date('H:i');
         $username = session()->get('username');
-
+    
         // Tentukan ucapan selamat berdasarkan waktu login
         if ($login_time >= '00:00' && $login_time < '10:00') {
             $greeting = 'Selamat pagi';
@@ -37,15 +39,36 @@ class DosenController extends BaseController
         } else {
             $greeting = 'Selamat';
         }
-
+    
         // Tampilkan halaman home dengan menyertakan ucapan selamat dan nama pengguna
-        return view('Dosen/dosen', [
+        return view('d_home', [
             'greeting' => $greeting,
             'username' => $username,
-            'title' => 'Dosen',
+            'title' => 'Home',
             'is_auth_page' => false
         ]);
+    }  
+    
+    public function janji()
+    {
+        $dosenModel = new DosenModel();
+        $janjiTemuModel = new JanjiTemuModel();
+
+        $dosens = $dosenModel->findAll();
+        $janjiTemuStatus = [];
+
+        foreach ($dosens as $dosen) {
+            $janjiTemu = $janjiTemuModel->getStatusByDosenId($dosen['id']);
+            if ($janjiTemu) {
+                $janjiTemuStatus[$dosen['id']] = $janjiTemu['status'];
+            }
+        }
+
+        $data = [
+            'dosens' => $dosens,
+            'janjiTemuStatus' => $janjiTemuStatus,
+        ];
+
+        return view('absen_dosen', $data);
     }
-
 }
-

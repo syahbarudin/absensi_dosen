@@ -1,5 +1,5 @@
 <?php $title = 'Dosen'; ?>
-<?php include(APPPATH . 'Views/template/header.php'); ?>
+<?php include(APPPATH . 'Views/template/d_header.php'); ?>
 
 <div class="container mx-auto p-4">
     <div class="flex flex-col items-center justify-center min-h-screen">
@@ -61,23 +61,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     absenButton.addEventListener('click', function () {
         absenModal.classList.remove('hidden');
-        // Ambil tanggal dan waktu saat ini
         var now = new Date();
         var tanggal = now.toISOString().slice(0, 10);
         var waktu = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         tanggalInput.textContent = 'Tanggal: ' + tanggal;
         waktuInput.textContent = 'Waktu: ' + waktu;
 
-        // Inisialisasi peta Leaflet.js
-        var map = L.map(mapContainer).setView([-6.2088, 106.8456], 15); // Koordinat Jakarta dengan zoom level 15
+        var map = L.map(mapContainer).setView([-6.2088, 106.8456], 15);
 
-        // Tambahkan layer peta dari OSM ke peta Leaflet
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Ambil lokasi pengguna menggunakan geolokasi
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 var userLocation = {
@@ -85,15 +81,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     lng: position.coords.longitude
                 };
 
-                // Tambahkan marker ke peta
                 L.marker(userLocation).addTo(map)
                     .bindPopup('Lokasi Anda')
                     .openPopup();
 
-                // Set teks lokasi pada halaman
                 document.getElementById('lokasi').textContent = 'Lokasi Anda: ' + userLocation.lat + ', ' + userLocation.lng;
-
-                // Posisikan peta ke lokasi pengguna
                 map.setView(userLocation, 15);
             }, function (error) {
                 console.error(error);
@@ -114,16 +106,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Tambahkan event listener untuk tombol Absen
     document.getElementById('absenSubmit').addEventListener('click', function () {
-        // Ambil data untuk dikirim
         var tanggal = document.getElementById('tanggal').textContent.replace('Tanggal: ', '');
         var waktu = document.getElementById('waktu').textContent.replace('Waktu: ', '');
         var lokasi = document.getElementById('lokasi').textContent.replace('Lokasi Anda: ', '');
 
-        // Kirim data absen ke backend menggunakan AJAX
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', '<?= site_url('dosen/absen') ?>', true);
+        xhr.open('POST', '<?= site_url('absen/absen') ?>', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE) {

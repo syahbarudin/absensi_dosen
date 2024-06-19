@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use CodeIgniter\Model;
@@ -8,12 +7,13 @@ class AbsensiModel extends Model
 {
     protected $table = 'absensi';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['user_id', 'tanggal', 'waktu', 'lokasi'];
+    protected $allowedFields = ['dosen_id', 'username', 'tanggal', 'waktu', 'lokasi'];
 
-    // Metode lain yang mungkin Anda tambahkan sesuai kebutuhan aplikasi
-
-    public function getAbsensiByUserId($userId)
+    public function getLastAbsensiByDosenToday($dosen_id)
     {
-        return $this->where('user_id', $userId)->findAll();
+        return $this->where('dosen_id', $dosen_id)
+                    ->where('tanggal', date('Y-m-d'))
+                    ->orderBy('waktu', 'DESC')
+                    ->first();
     }
 }

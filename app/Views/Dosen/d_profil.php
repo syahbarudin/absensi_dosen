@@ -1,5 +1,5 @@
 <?php $title = 'Profil';
-include(APPPATH . 'Views/template/header.php'); ?>
+include(APPPATH . 'Views/template/d_header.php'); ?>
 
 <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
 <div class="text-center">

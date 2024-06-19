@@ -21,11 +21,11 @@
         <nav class="bg-gray-800 p-4">
             <div class="container mx-auto flex justify-between items-center">
                 <div class="flex items-center text-white text-lg font-bold">
-                    Siakad | Mahasiswa
+                    Siakad
                     <br>
-                    <a href="<?= site_url('home') ?>" class="ml-80 text-gray-300 hover:text-white">Home</a>
-                    <a href="<?= site_url('info') ?>" class="ml-20 text-gray-300 hover:text-white">Info</a>
-                    <a href="<?= site_url('absen_dosen') ?>" class="ml-20 text-gray-300 hover:text-white">Dosen</a>
+                    <a href="<?= site_url('info') ?>" class="ml-80 text-gray-300 hover:text-white">Info</a>
+                    <a href="<?= site_url('dosen') ?>" class="ml-20 text-gray-300 hover:text-white">Absen</a>
+                    <a href="<?= site_url('mahasiswa') ?>" class="ml-20 text-gray-300 hover:text-white">Mahasiswa</a>
                 </div>
                 <div class="relative">
                     <?php if (current_url() == site_url('profil')) : ?>
@@ -37,8 +37,8 @@
                             Menu
                         </button>
                         <div id="menuDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg hidden">
-                            <a href="<?= site_url('profil') ?>" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Profil</a>
-                            <a href="<?= site_url('auth/logout') ?>" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Logout</a>
+                            <a href="<?= site_url('d_profil') ?>" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Profil</a>
+                            <a href="<?= site_url('d/logout') ?>" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Logout</a>
                         </div>
                     <?php endif; ?>
                 </div>
