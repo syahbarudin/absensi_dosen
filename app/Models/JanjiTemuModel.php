@@ -20,6 +20,13 @@ class JanjiTemuModel extends Model
         'created_at',
         'updated_at'
     ];
-
+    public function getJanjiTemuWithMahasiswa()
+    {
+        return $this->db->table($this->table)
+                        ->select('janji_temu.*, mahasiswa.username AS username_mahasiswa')
+                        ->join('mahasiswa', 'mahasiswa.id = janji_temu.mahasiswa_id')
+                        ->get()
+                        ->getResultArray();
+    }
    
 }
