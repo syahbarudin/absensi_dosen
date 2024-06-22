@@ -53,7 +53,7 @@ include(APPPATH . 'Views/template/header.php');
         </div>
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
         <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-            <form id="janjiForm" action="<?= site_url('janji/create') ?>" method="post">
+            <form id="janjiForm" action="<?= site_url('mahasiswa/create') ?>" method="post">
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div class="sm:flex sm:items-start">
                         <div class="mt-3 text-center sm:mt-0 sm:text-left">
@@ -71,7 +71,14 @@ include(APPPATH . 'Views/template/header.php');
                                 </div>
                                 <div class="mb-4">
                                     <label class="block text-gray-700 text-sm font-bold mb-2" for="waktu">Waktu</label>
-                                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="waktu" name="waktu" type="time" required>
+                                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="waktu" name="waktu" required>
+                                        <?php for ($hour = 0; $hour <= 23; $hour++): ?>
+                                            <?php for ($minute = 0; $minute < 60; $minute += 15): ?>
+                                                <?php $time = sprintf('%02d:%02d', $hour, $minute); ?>
+                                                <option value="<?= $time ?>"><?= $time ?></option>
+                                            <?php endfor; ?>
+                                        <?php endfor; ?>
+                                    </select>
                                 </div>
                                 <div class="mb-4">
                                     <label class="block text-gray-700 text-sm font-bold mb-2" for="tempat">Tempat</label>
@@ -129,5 +136,4 @@ function searchDosen() {
 }
 </script>
 
-<?php include(APPPATH . 'Views/template/footer.php');
-?>
+<?php include(APPPATH . 'Views/template/footer.php'); ?>

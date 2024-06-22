@@ -24,8 +24,8 @@
                     Siakad
                     <br>
                     <a href="<?= site_url('info') ?>" class="ml-80 text-gray-300 hover:text-white">Info</a>
-                    <a href="<?= site_url('dosen') ?>" class="ml-20 text-gray-300 hover:text-white">Absen</a>
-                    <a href="<?= site_url('mahasiswa') ?>" class="ml-20 text-gray-300 hover:text-white">Mahasiswa</a>
+                    <a href="<?= site_url('d_absen') ?>" class="ml-20 text-gray-300 hover:text-white">Absen</a>
+                    <a href="<?= site_url('dosen/janji_temu') ?>" class="ml-20 text-gray-300 hover:text-white">Mahasiswa</a>
                 </div>
                 <div class="relative">
                     <?php if (current_url() == site_url('profil')) : ?>
