@@ -9,7 +9,7 @@ $routes->get('/', 'AuthController::index');
 $routes->post('register', 'AuthController::register');
 $routes->post('login', 'AuthController::login');
 $routes->get('auth/logout', 'AuthController::logout');
-$routes->get('profil', 'ProfilController::index', ['as' => 'profil']);
+$routes->get('profil', 'ProfilController::index');
 $routes->get('d_profil', 'D_ProfilController::index');
 $routes->get('absen_dosen', 'StatusController::index');
 $routes->get('home', 'HomeController::index');
@@ -26,4 +26,3 @@ $routes->group('dosen', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('janji_temu', 'JanjiTemuController::dosenJanjiTemu');
     $routes->get('janji_temu/updateStatus/(:num)/(:alpha)', 'JanjiTemuController::updateStatus/$1/$2');
 });
-

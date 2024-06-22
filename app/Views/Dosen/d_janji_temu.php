@@ -19,6 +19,7 @@ include(APPPATH . 'Views/template/d_header.php'); ?>
         <tbody>
             <?php foreach ($janjiTemuList as $janjiTemu): ?>
                 <tr>
+
                     <td class="py-2 px-4 border-b"><?= esc($janjiTemu['username_mahasiswa']) ?></td>
                     <td class="py-2 px-4 border-b"><?= esc($janjiTemu['tanggal']) ?></td>
                     <td class="py-2 px-4 border-b"><?= esc($janjiTemu['waktu']) ?></td>

@@ -27,6 +27,7 @@
                     <a href="<?= site_url('info') ?>" class="ml-20 text-gray-300 hover:text-white">Info</a>
                     <a href="<?= site_url('absen_dosen') ?>" class="ml-20 text-gray-300 hover:text-white">Dosen</a>
                 </div>
+                
                 <div class="relative">
                     <?php if (current_url() == site_url('profil')) : ?>
                         <a href="<?= site_url('home') ?>" class="text-gray-300 hover:text-white">
@@ -34,7 +35,7 @@
                         </a>
                     <?php else : ?>
                         <button id="menuButton" class="focus:outline-none hover:text-white">
-                            Menu
+                            Menu 
                         </button>
                         <div id="menuDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg hidden">
                             <a href="<?= site_url('profil') ?>" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Profil</a>

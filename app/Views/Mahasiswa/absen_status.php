@@ -18,10 +18,20 @@ include(APPPATH . 'Views/template/header.php');
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($dosens as $dosen): ?>
+            <?php foreach ($dosens as $dosen) : ?>
                 <tr>
                     <td class="border border-gray-300 py-2 px-4"><?= $dosen['username'] ?></td>
-                    <td class="border border-gray-300 py-2 px-4"><?= $dosen['status'] ?></td>
+                    <td class="border border-gray-300 py-2 px-4">
+                        <span class="inline-block py-1 px-2 rounded-lg 
+                        <?php
+                        if ($dosen['status'] == 'Hadir') {
+                            echo 'bg-green-400 text-white-400';
+                        } elseif ($dosen['status'] == 'Tidak Hadir') {
+                            echo 'bg-red-400 text-white-400';}
+                            ?>">
+                            <?= ucfirst($dosen['status']) ?>
+                        </span>
+                    </td>
                     <td class="border border-gray-300 py-2 px-4">
                         <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="openModal(<?= $dosen['id'] ?>, '<?= $dosen['username'] ?>')">Buat Janji</button>
                     </td>
@@ -71,6 +81,7 @@ include(APPPATH . 'Views/template/header.php');
                                 </div>
                                 <div class="mb-4">
                                     <label class="block text-gray-700 text-sm font-bold mb-2" for="waktu">Waktu</label>
+<<<<<<< HEAD
                                     <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="waktu" name="waktu" required>
                                         <?php for ($hour = 0; $hour <= 23; $hour++): ?>
                                             <?php for ($minute = 0; $minute < 60; $minute += 15): ?>
@@ -79,7 +90,23 @@ include(APPPATH . 'Views/template/header.php');
                                             <?php endfor; ?>
                                         <?php endfor; ?>
                                     </select>
+=======
+                                    <div class="relative">
+                                        <select id="hour" name="hour" class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-20 inline-block">
+                                            <?php for ($h = 0; $h < 24; $h++) : ?>
+                                                <option value="<?= str_pad($h, 2, '0', STR_PAD_LEFT) ?>"><?= str_pad($h, 2, '0', STR_PAD_LEFT) ?></option>
+                                            <?php endfor; ?>
+                                        </select>
+                                        <span class="px-2">:</span>
+                                        <select id="minute" name="minute" class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-20 inline-block">
+                                            <?php for ($m = 0; $m < 60; $m++) : ?>
+                                                <option value="<?= str_pad($m, 2, '0', STR_PAD_LEFT) ?>"><?= str_pad($m, 2, '0', STR_PAD_LEFT) ?></option>
+                                            <?php endfor; ?>
+                                        </select>
+                                    </div>
+>>>>>>> 2764c4c619139f527a9dedef0a7c15523609199e
                                 </div>
+
                                 <div class="mb-4">
                                     <label class="block text-gray-700 text-sm font-bold mb-2" for="tempat">Tempat</label>
                                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="tempat" name="tempat" type="text" required>
@@ -106,34 +133,38 @@ include(APPPATH . 'Views/template/header.php');
 </div>
 
 <script>
-function openModal(dosenId, dosenName) {
-    document.getElementById('dosen_id').value = dosenId;
-    document.getElementById('dosen_nama').value = dosenName;
-    document.getElementById('modal').classList.remove('hidden');
-}
+    function openModal(dosenId, dosenName) {
+        document.getElementById('dosen_id').value = dosenId;
+        document.getElementById('dosen_nama').value = dosenName;
+        document.getElementById('modal').classList.remove('hidden');
+    }
 
-function closeModal() {
-    document.getElementById('modal').classList.add('hidden');
-}
+    function closeModal() {
+        document.getElementById('modal').classList.add('hidden');
+    }
 
-function searchDosen() {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById('searchBar');
-    filter = input.value.toLowerCase();
-    table = document.getElementById('dosenTable');
-    tr = table.getElementsByTagName('tr');
-    for (i = 1; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName('td')[0];
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                tr[i].style.display = '';
-            } else {
-                tr[i].style.display = 'none';
+    function searchDosen() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById('searchBar');
+        filter = input.value.toLowerCase();
+        table = document.getElementById('dosenTable');
+        tr = table.getElementsByTagName('tr');
+        for (i = 1; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName('td')[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                    tr[i].style.display = '';
+                } else {
+                    tr[i].style.display = 'none';
+                }
             }
         }
     }
-}
 </script>
 
+<<<<<<< HEAD
 <?php include(APPPATH . 'Views/template/footer.php'); ?>
+=======
+<?php include(APPPATH . 'Views/template/footer.php'); ?>
+>>>>>>> 2764c4c619139f527a9dedef0a7c15523609199e
