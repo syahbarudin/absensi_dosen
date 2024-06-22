@@ -20,10 +20,6 @@ class JanjiTemuModel extends Model
         'created_at',
         'updated_at'
     ];
-<<<<<<< HEAD
-
-=======
->>>>>>> 2764c4c619139f527a9dedef0a7c15523609199e
     public function getJanjiTemuWithMahasiswa()
     {
         return $this->db->table($this->table)

@@ -21,15 +21,12 @@
         <nav class="bg-gray-800 p-4">
             <div class="container mx-auto flex justify-between items-center">
                 <div class="flex items-center text-white text-lg font-bold">
-                    Siakad
+                    Siakad | Dosen
                     <br> 
                     <a href="<?= site_url('info') ?>" class="ml-80 text-gray-300 hover:text-white">Info</a>
                     <a href="<?= site_url('d_absen') ?>" class="ml-20 text-gray-300 hover:text-white">Absen</a>
-<<<<<<< HEAD
-                    <a href="<?= site_url('dosen/janji_temu') ?>" class="ml-20 text-gray-300 hover:text-white">Mahasiswa</a>
-=======
                     <a href="<?= site_url('dosen/janji_temu') ?>" class="ml-20 text-gray-300 hover:text-white">Persetujuan Janji Temu</a>
->>>>>>> 2764c4c619139f527a9dedef0a7c15523609199e
+
                 </div>
                 
                 <div class="relative">

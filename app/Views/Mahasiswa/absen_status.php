@@ -81,7 +81,7 @@ include(APPPATH . 'Views/template/header.php');
                                 </div>
                                 <div class="mb-4">
                                     <label class="block text-gray-700 text-sm font-bold mb-2" for="waktu">Waktu</label>
-<<<<<<< HEAD
+
                                     <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="waktu" name="waktu" required>
                                         <?php for ($hour = 0; $hour <= 23; $hour++): ?>
                                             <?php for ($minute = 0; $minute < 60; $minute += 15): ?>
@@ -90,7 +90,6 @@ include(APPPATH . 'Views/template/header.php');
                                             <?php endfor; ?>
                                         <?php endfor; ?>
                                     </select>
-=======
                                     <div class="relative">
                                         <select id="hour" name="hour" class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-20 inline-block">
                                             <?php for ($h = 0; $h < 24; $h++) : ?>
