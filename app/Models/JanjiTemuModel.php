@@ -28,5 +28,4 @@ class JanjiTemuModel extends Model
                         ->get()
                         ->getResultArray();
     }
-   
 }

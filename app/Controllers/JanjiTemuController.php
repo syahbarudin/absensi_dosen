@@ -34,7 +34,7 @@ class JanjiTemuController extends BaseController
         $hour = $this->request->getPost('hour');
         $minute = $this->request->getPost('minute');
         $waktu = $hour . ':' . $minute . ':00'; 
-        
+
         $data = [
             'dosen_id' => $this->request->getPost('dosen_id'),
             'mahasiswa_id' => $this->request->getPost('mahasiswa_id'),
