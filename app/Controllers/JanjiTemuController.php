@@ -20,12 +20,6 @@ class JanjiTemuController extends BaseController
         return view('Dosen/d_janji_temu', $data);
     }
 
-    public function dosenJanjiTemu()
-    {
-        $data['janjiTemuList'] = $this->janjiTemuModel->getJanjiTemuWithMahasiswa();
-        return view('Dosen/d_janji_temu', $data);
-    }
-
     public function create()
     {
         // kombinasi jam dan menit
