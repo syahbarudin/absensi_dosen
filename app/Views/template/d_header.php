@@ -22,7 +22,7 @@
             <div class="container mx-auto flex justify-between items-center">
                 <div class="flex items-center text-white text-lg font-bold">
                     Siakad
-                    <br>
+                    <br> 
                     <a href="<?= site_url('info') ?>" class="ml-80 text-gray-300 hover:text-white">Info</a>
                     <a href="<?= site_url('d_absen') ?>" class="ml-20 text-gray-300 hover:text-white">Absen</a>
                     <a href="<?= site_url('dosen/janji_temu') ?>" class="ml-20 text-gray-300 hover:text-white">Persetujuan Janji Temu</a>
