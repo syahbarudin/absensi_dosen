@@ -27,6 +27,7 @@
                     <a href="<?= site_url('info') ?>" class="ml-20 text-gray-300 hover:text-white">Info</a>
                     <a href="<?= site_url('absen_dosen') ?>" class="ml-20 text-gray-300 hover:text-white">Dosen</a>
                 </div>
+                
                 <div class="relative">
                     <?php if (current_url() == site_url('profil')) : ?>
                         <a href="<?= site_url('home') ?>" class="text-gray-300 hover:text-white">

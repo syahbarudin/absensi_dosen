@@ -27,6 +27,7 @@
                     <a href="<?= site_url('d_absen') ?>" class="ml-20 text-gray-300 hover:text-white">Absen</a>
                     <a href="<?= site_url('dosen/janji_temu') ?>" class="ml-20 text-gray-300 hover:text-white">Persetujuan Janji Temu</a>
                 </div>
+                
                 <div class="relative">
                     <?php if (current_url() == site_url('profil')) : ?>
                         <a href="<?= site_url('home') ?>" class="text-gray-300 hover:text-white">
