@@ -112,7 +112,6 @@ class ProfilController extends BaseController
             $dataBiodata['mahasiswa_id'] = $mahasiswa_id;
             $this->biodataMahasiswaModel->insert($dataBiodata);
         }
-        
 
         return redirect()->to('profil')->with('success', 'Profil berhasil diperbarui');
     }
