@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2024 at 05:00 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Waktu pembuatan: 22 Jun 2024 pada 10.31
+-- Versi server: 10.4.28-MariaDB
+-- Versi PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `absensi`
+-- Struktur dari tabel `absensi`
 --
 
 CREATE TABLE `absensi` (
@@ -39,7 +39,7 @@ CREATE TABLE `absensi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `absensi`
+-- Dumping data untuk tabel `absensi`
 --
 
 INSERT INTO `absensi` (`id`, `dosen_id`, `username`, `tanggal`, `waktu`, `lokasi`, `created_at`, `updated_at`) VALUES
@@ -51,7 +51,28 @@ INSERT INTO `absensi` (`id`, `dosen_id`, `username`, `tanggal`, `waktu`, `lokasi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dosen`
+-- Struktur dari tabel `biodata_mahasiswa`
+--
+
+CREATE TABLE `biodata_mahasiswa` (
+  `mahasiswa_id` int(11) NOT NULL,
+  `nama_lengkap` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `alamat` text DEFAULT NULL,
+  `telepon` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `biodata_mahasiswa`
+--
+
+INSERT INTO `biodata_mahasiswa` (`mahasiswa_id`, `nama_lengkap`, `email`, `alamat`, `telepon`) VALUES
+(1, 'Azwa dipani', 'azwadipani@gmail.com', 'Jl. Alhidayah No. 123', '083814354180');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `dosen`
 --
 
 CREATE TABLE `dosen` (
@@ -66,7 +87,7 @@ CREATE TABLE `dosen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `dosen`
+-- Dumping data untuk tabel `dosen`
 --
 
 INSERT INTO `dosen` (`id`, `username`, `password`, `device_info`, `last_login`, `created_at`, `last_device_info`, `ip_address`) VALUES
@@ -77,7 +98,7 @@ INSERT INTO `dosen` (`id`, `username`, `password`, `device_info`, `last_login`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `janji_temu`
+-- Struktur dari tabel `janji_temu`
 --
 
 CREATE TABLE `janji_temu` (
@@ -94,7 +115,7 @@ CREATE TABLE `janji_temu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `janji_temu`
+-- Dumping data untuk tabel `janji_temu`
 --
 
 INSERT INTO `janji_temu` (`id`, `dosen_id`, `mahasiswa_id`, `tanggal`, `waktu`, `tempat`, `keterangan`, `status`, `created_at`, `updated_at`) VALUES
@@ -103,7 +124,7 @@ INSERT INTO `janji_temu` (`id`, `dosen_id`, `mahasiswa_id`, `tanggal`, `waktu`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mahasiswa`
+-- Struktur dari tabel `mahasiswa`
 --
 
 CREATE TABLE `mahasiswa` (
@@ -114,39 +135,46 @@ CREATE TABLE `mahasiswa` (
   `last_login` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `last_device_info` varchar(255) DEFAULT NULL,
-  `ip_address` varchar(45) DEFAULT NULL
+  `ip_address` varchar(45) DEFAULT NULL,
+  `profile_image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `mahasiswa`
+-- Dumping data untuk tabel `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`id`, `username`, `password`, `device_info`, `last_login`, `created_at`, `last_device_info`, `ip_address`) VALUES
-(1, 'udin', '$2y$10$5I8i3inbxeye06AS7VRx7usKiepiR33LfBD.VLELfnJqZ75JpA3Vy', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0', '2024-06-19 02:38:42', '2024-05-14 11:38:20', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0', '::1'),
-(2, 'panjul', '$2y$10$FHAtFoLTpJGV6kYXCFu.puw/7/txBavXAz1ZlqMRNgbcERgOHca0S', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0', '2024-05-26 08:16:55', '2024-05-20 09:41:17', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0', NULL),
-(3, 'dina', '$2y$10$QAVSwBeosWZBMA4yUDOj/.wiajCmxQQlRyBGyrXsSIGXcJ/G696Wm', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0', '2024-06-18 09:14:28', '2024-05-22 01:42:19', NULL, '::1'),
-(4, 'kntl24', '$2y$10$s9q6A/5p9RCJ3foVzQSajeb9lYvYRn3NcOzCWUpIWiUT8P11ccpKW', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', '2024-06-03 01:18:56', '2024-06-03 01:18:42', NULL, '172.10.15.54');
+INSERT INTO `mahasiswa` (`id`, `username`, `password`, `device_info`, `last_login`, `created_at`, `last_device_info`, `ip_address`, `profile_image`) VALUES
+(1, 'azwa', '$2y$10$5I8i3inbxeye06AS7VRx7usKiepiR33LfBD.VLELfnJqZ75JpA3Vy', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', '2024-06-22 07:56:28', '2024-05-14 11:38:20', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0', '::1', '1719042631_0810bb40ef736ff458e1.jpg'),
+(2, 'panjul', '$2y$10$FHAtFoLTpJGV6kYXCFu.puw/7/txBavXAz1ZlqMRNgbcERgOHca0S', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0', '2024-05-26 08:16:55', '2024-05-20 09:41:17', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0', NULL, NULL),
+(3, 'dina', '$2y$10$QAVSwBeosWZBMA4yUDOj/.wiajCmxQQlRyBGyrXsSIGXcJ/G696Wm', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0', '2024-06-18 09:14:28', '2024-05-22 01:42:19', NULL, '::1', NULL),
+(4, 'kntl24', '$2y$10$s9q6A/5p9RCJ3foVzQSajeb9lYvYRn3NcOzCWUpIWiUT8P11ccpKW', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36', '2024-06-03 01:18:56', '2024-06-03 01:18:42', NULL, '172.10.15.54', NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `absensi`
+-- Indeks untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
   ADD PRIMARY KEY (`id`),
   ADD KEY `dosen_id` (`dosen_id`);
 
 --
--- Indexes for table `dosen`
+-- Indeks untuk tabel `biodata_mahasiswa`
+--
+ALTER TABLE `biodata_mahasiswa`
+  ADD PRIMARY KEY (`mahasiswa_id`);
+
+--
+-- Indeks untuk tabel `dosen`
 --
 ALTER TABLE `dosen`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`) USING BTREE;
 
 --
--- Indexes for table `janji_temu`
+-- Indeks untuk tabel `janji_temu`
 --
 ALTER TABLE `janji_temu`
   ADD PRIMARY KEY (`id`),
@@ -154,52 +182,58 @@ ALTER TABLE `janji_temu`
   ADD KEY `mahasiswa_id` (`mahasiswa_id`);
 
 --
--- Indexes for table `mahasiswa`
+-- Indeks untuk tabel `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `absensi`
+-- AUTO_INCREMENT untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `dosen`
+-- AUTO_INCREMENT untuk tabel `dosen`
 --
 ALTER TABLE `dosen`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `janji_temu`
+-- AUTO_INCREMENT untuk tabel `janji_temu`
 --
 ALTER TABLE `janji_temu`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `mahasiswa`
+-- AUTO_INCREMENT untuk tabel `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `absensi`
+-- Ketidakleluasaan untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
   ADD CONSTRAINT `absensi_ibfk_1` FOREIGN KEY (`dosen_id`) REFERENCES `dosen` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `janji_temu`
+-- Ketidakleluasaan untuk tabel `biodata_mahasiswa`
+--
+ALTER TABLE `biodata_mahasiswa`
+  ADD CONSTRAINT `fk_mahasiswa_biodata` FOREIGN KEY (`mahasiswa_id`) REFERENCES `mahasiswa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `janji_temu`
 --
 ALTER TABLE `janji_temu`
   ADD CONSTRAINT `janji_temu_ibfk_1` FOREIGN KEY (`dosen_id`) REFERENCES `dosen` (`id`),
