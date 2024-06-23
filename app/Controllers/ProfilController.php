@@ -27,7 +27,16 @@ class ProfilController extends BaseController
             return redirect()->to('/')->with('error', 'Mahasiswa tidak ditemukan');
         }
 
-        return view('mahasiswa/profil', ['mahasiswa' => $mahasiswa, 'biodata' => $biodata]);
+        if (!$biodata) {
+            $biodata = [
+                'nama_lengkap' => '',
+                'email' => '',
+                'alamat' => '',
+                'telepon' => '',
+            ];
+        }
+
+        return view('Mahasiswa/profil', ['mahasiswa' => $mahasiswa??[], 'biodata' => $biodata??[]]);
     }
 
     public function edit_profile()
@@ -40,7 +49,16 @@ class ProfilController extends BaseController
             return redirect()->to('/')->with('error', 'Mahasiswa tidak ditemukan');
         }
 
-        return view('mahasiswa/edit_profile', ['mahasiswa' => $mahasiswa, 'biodata' => $biodata]);
+        if (!$biodata) {
+            $biodata = [
+                'nama_lengkap' => '',
+                'email' => '',
+                'alamat' => '',
+                'telepon' => '',
+            ];
+        }
+
+        return view('Mahasiswa/edit_profile', ['mahasiswa' => $mahasiswa, 'biodata' => $biodata]);
     }
 
     public function update_profile()
@@ -88,8 +106,14 @@ class ProfilController extends BaseController
         ];
 
         $this->mahasiswaModel->update($mahasiswa_id, $dataMahasiswa);
-        $this->biodataMahasiswaModel->update($mahasiswa_id, $dataBiodata);
+        if ($this->biodataMahasiswaModel->find($mahasiswa_id)) {
+            $this->biodataMahasiswaModel->update($mahasiswa_id, $dataBiodata);
+        } else {
+            $dataBiodata['mahasiswa_id'] = $mahasiswa_id;
+            $this->biodataMahasiswaModel->insert($dataBiodata);
+        }
+        
 
-        return redirect()->to('/profil')->with('success', 'Profil berhasil diperbarui');
+        return redirect()->to('profil')->with('success', 'Profil berhasil diperbarui');
     }
 }

@@ -27,7 +27,7 @@ include(APPPATH . 'Views/template/d_header.php'); ?>
                     <td class="py-2 px-4 border-b"><?= esc($janjiTemu['keterangan']) ?></td>
                     <td class="py-2 px-4 border-b">
                         <span class="inline-block py-1 px-2 rounded-lg 
-                            <?= $janjiTemu['status'] == 'pending' ? 'bg-yellow-400 text-yellow-900' : ($janjiTemu['status'] == 'rejected' ? 'bg-red-400 text-red-900' : 'bg-green-400 text-green-900') ?>">
+                            <?= $janjiTemu['status'] == 'Menunggu' ? 'bg-yellow-400 text-yellow-900' : ($janjiTemu['status'] == 'Dibatalkan' ? 'bg-red-400 text-red-900' : 'bg-green-400 text-green-900') ?>">
                             <?= ucfirst($janjiTemu['status']) ?>
                         </span>
                     </td>
