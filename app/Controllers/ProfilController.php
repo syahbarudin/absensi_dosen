@@ -57,7 +57,6 @@ class ProfilController extends BaseController
                 'telepon' => '',
             ];
         }
-
         return view('Mahasiswa/edit_profile', ['mahasiswa' => $mahasiswa, 'biodata' => $biodata]);
     }
 
@@ -112,7 +111,6 @@ class ProfilController extends BaseController
             $dataBiodata['mahasiswa_id'] = $mahasiswa_id;
             $this->biodataMahasiswaModel->insert($dataBiodata);
         }
-
         return redirect()->to('profil')->with('success', 'Profil berhasil diperbarui');
     }
 }
