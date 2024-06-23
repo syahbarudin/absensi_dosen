@@ -162,8 +162,5 @@ include(APPPATH . 'Views/template/header.php');
     }
 </script>
 
-<<<<<<< HEAD
+
 <?php include(APPPATH . 'Views/template/footer.php'); ?>
-=======
-<?php include(APPPATH . 'Views/template/footer.php'); ?>
->>>>>>> 2764c4c619139f527a9dedef0a7c15523609199e
