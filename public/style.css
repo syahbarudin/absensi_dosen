@@ -298,3 +298,34 @@ html {
     background-color: #0056b3;
     transform: translateY(-2px);
 }
+
+/* CSS for Pagination */
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.pagination a:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination .active a {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}

@@ -23,7 +23,7 @@
                 <div class="flex items-center text-white text-lg font-bold">
                     Siakad | Dosen
                     <br> 
-                    <a href="<?= site_url('info') ?>" class="ml-80 text-gray-300 hover:text-white">Info</a>
+                    <a href="<?= site_url('d_home') ?>" class="ml-80 text-gray-300 hover:text-white">Home</a>
                     <a href="<?= site_url('d_absen') ?>" class="ml-20 text-gray-300 hover:text-white">Absen</a>
                     <a href="<?= site_url('dosen/janji_temu') ?>" class="ml-20 text-gray-300 hover:text-white">Persetujuan Janji Temu</a>
 

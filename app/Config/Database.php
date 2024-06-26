@@ -31,7 +31,7 @@ class Database extends Config
         'hostname'     => '127.0.0.1',
         'username'     => 'root',
         'password'     => '',
-        'database'     => 'device',
+        'database'     => 'satu_device',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,

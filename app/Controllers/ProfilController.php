@@ -22,6 +22,10 @@ class ProfilController extends BaseController
         $mahasiswa_id = session()->get('mahasiswa_id');
         $mahasiswa = $this->mahasiswaModel->find($mahasiswa_id);
         $biodata = $this->biodataMahasiswaModel->getBiodata($mahasiswa_id);
+        if ($this->request->getIPAddress() !== $mahasiswa ['ip_address']) {
+            echo "<script>alert('Akun ini telah login diperangkat lain !'); window.location.href = '/';</script>";
+            return false;
+        }
 
         if (!$mahasiswa) {
             return redirect()->to('/')->with('error', 'Mahasiswa tidak ditemukan');

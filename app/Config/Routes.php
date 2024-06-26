@@ -26,3 +26,5 @@ $routes->group('dosen', ['namespace' => 'App\Controllers'], function ($routes) {
     $routes->get('janji_temu', 'JanjiTemuController::dosenJanjiTemu');
     $routes->get('janji_temu/updateStatus/(:num)/(:alpha)', 'JanjiTemuController::updateStatus/$1/$2');
 });
+$routes->get('d_info', 'InfoController::upload');
+$routes->post('info/upload', 'InfoController::upload');

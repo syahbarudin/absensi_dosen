@@ -1,5 +1,5 @@
-<?php $title = 'Profil Mahasiswa'; ?>
-<?php include(APPPATH . 'Views/template/header.php'); ?>
+<?php $title = 'Profil Mahasiswa'; 
+include(APPPATH . 'Views/template/header.php'); ?>
 
 <div class="container">
     <div class="row justify-content-center">
@@ -9,7 +9,11 @@
                     <h3>Profil Mahasiswa</h3>
                 </div>
                 <div class="card-body text-center">
-                    <img src="/uploads/profile/<?= esc($mahasiswa['profile_image']) ?>" alt="Profile Image" width="100">
+                <?php if (!empty($mahasiswa['profile_image'])): ?>
+                        <img src="/uploads/profile/<?= esc($mahasiswa['profile_image']) ?>" alt="Profile Image" width="100">
+                    <?php else: ?>
+                        <img src="https://via.placeholder.com/100" alt="Profile Image" width="100">
+                    <?php endif; ?>
                     <p><strong>Username:</strong> <?= esc($mahasiswa['username']) ?></p>
                     <p><strong>Nama Lengkap:</strong> <?= esc($biodata['nama_lengkap']) ?></p>
                     <p><strong>Email:</strong> <?= esc($biodata['email']) ?></p>

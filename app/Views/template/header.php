@@ -34,7 +34,7 @@
                             <img src="<?= base_url('backicon.png') ?>" alt="Kembali" class="w-6 h-6">
                         </a>
                     <?php else : ?>
-                        <button id="menuButton" class="focus:outline-none hover:text-white">
+                        <button id="menuButton" class="text-gray-300 hover:text-white">
                             Menu 
                         </button>
                         <div id="menuDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg hidden">

@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\DosenModel;
-use App\Models\JanjiTemuModel;
+
 
 class D_HomeController extends BaseController
 {
@@ -49,26 +49,4 @@ class D_HomeController extends BaseController
         ]);
     }  
     
-    public function janji()
-    {
-        $dosenModel = new DosenModel();
-        $janjiTemuModel = new JanjiTemuModel();
-
-        $dosens = $dosenModel->findAll();
-        $janjiTemuStatus = [];
-
-        foreach ($dosens as $dosen) {
-            $janjiTemu = $janjiTemuModel->getStatusByDosenId($dosen['id']);
-            if ($janjiTemu) {
-                $janjiTemuStatus[$dosen['id']] = $janjiTemu['status'];
-            }
-        }
-
-        $data = [
-            'dosens' => $dosens,
-            'janjiTemuStatus' => $janjiTemuStatus,
-        ];
-
-        return view('absen_dosen', $data);
-    }
 }

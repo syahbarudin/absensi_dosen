@@ -1,7 +1,5 @@
-<?php
-$title = 'Kehadiran Dosen';
-include(APPPATH . 'Views/template/header.php');
-?>
+<?php $title = 'Kehadiran Dosen'; ?>
+<?php include(APPPATH . 'Views/template/header.php'); ?>
 
 <div class="container mx-auto p-6">
     <h1 class="text-3xl font-bold mb-6">Status Kehadiran Dosen</h1>
@@ -20,7 +18,7 @@ include(APPPATH . 'Views/template/header.php');
         <tbody>
             <?php foreach ($dosens as $dosen) : ?>
                 <tr>
-                    <td class="border border-gray-300 py-2 px-4"><?= $dosen['username'] ?></td>
+                    <td class="border border-gray-300 py-2 px-4"><?= esc($dosen['username']) ?></td>
                     <td class="border border-gray-300 py-2 px-4">
                         <span class="inline-block py-1 px-2 rounded-lg 
                         <?php
@@ -54,6 +52,12 @@ include(APPPATH . 'Views/template/header.php');
             <?php endforeach; ?>
         </tbody>
     </table>
+
+    <!-- Paginasi -->
+    <div class="mt-4">
+        <a>Pages</a>
+        <?= $pager->links('group1','default_full') ?>
+    </div>
 </div>
 
 <div id="modal" class="fixed z-10 inset-0 overflow-y-auto hidden">
@@ -81,15 +85,6 @@ include(APPPATH . 'Views/template/header.php');
                                 </div>
                                 <div class="mb-4">
                                     <label class="block text-gray-700 text-sm font-bold mb-2" for="waktu">Waktu</label>
-
-                                    <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="waktu" name="waktu" required>
-                                        <?php for ($hour = 0; $hour <= 23; $hour++): ?>
-                                            <?php for ($minute = 0; $minute < 60; $minute += 15): ?>
-                                                <?php $time = sprintf('%02d:%02d', $hour, $minute); ?>
-                                                <option value="<?= $time ?>"><?= $time ?></option>
-                                            <?php endfor; ?>
-                                        <?php endfor; ?>
-                                    </select>
                                     <div class="relative">
                                         <select id="hour" name="hour" class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-20 inline-block">
                                             <?php for ($h = 0; $h < 24; $h++) : ?>
@@ -103,7 +98,6 @@ include(APPPATH . 'Views/template/header.php');
                                             <?php endfor; ?>
                                         </select>
                                     </div>
-
                                 </div>
 
                                 <div class="mb-4">
@@ -148,7 +142,7 @@ include(APPPATH . 'Views/template/header.php');
         filter = input.value.toLowerCase();
         table = document.getElementById('dosenTable');
         tr = table.getElementsByTagName('tr');
-        for (i = 1; i < tr.length; i++) {
+        for (i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName('td')[0];
             if (td) {
                 txtValue = td.textContent || td.innerText;
@@ -163,4 +157,3 @@ include(APPPATH . 'Views/template/header.php');
 </script>
 
 <?php include(APPPATH . 'Views/template/footer.php'); ?>
-

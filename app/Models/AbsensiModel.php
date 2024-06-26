@@ -16,4 +16,5 @@ class AbsensiModel extends Model
                     ->orderBy('waktu', 'DESC')
                     ->first();
     }
+    
 }

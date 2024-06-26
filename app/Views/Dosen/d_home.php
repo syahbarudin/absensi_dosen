@@ -1,5 +1,5 @@
 <?php $title = 'Home';
-include(APPPATH . 'Views/template/header.php'); ?>
+include(APPPATH . 'Views/template/d_header.php'); ?>
 
 <div class="container mx-auto p-4">
     <div class="flex flex-col items-center justify-center min-h-screen">
